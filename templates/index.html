@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>NextBook Finder</title>
+<!--    <script src="../static/js/submitJS.js"></script>-->
+    <script src="../static/js/jquery-3.5.1.js"></script>
+</head>
+ 
+<body>
+ 
+    <div class="container">
+       <h1>Welcome to NextBook Finder</h1>
+        <form class="form-ratings" action="/" method="POST">
+            <label for="bookName">Choose a book's name:</label>
+            <select name="bookName" id="bookName">
+                {% for book in books %}
+                <option value= "{{book}}">{{book}}</option>
+                {% endfor %}
+            </select><br><br>Enter Rating:
+            <input id="rating" name="rating" type="number" step="0.01" min=0 max=5>
+            <br><br>Ratings given till now: <br>
+            {% for rating in ratings %}
+                {{rating}}<br>
+            {% endfor %}
+            
+            <br><br>
+            <label for="yes_no">Do you want to share more ratings?:</label><br>
+                <p><input type="radio" name="yes_no" checked value="Yes">Yes</p>
+                <p><input type="radio" name="yes_no" value="No">No</p>
+                       
+            <button id="btnSignUp" type="submit">Submit</button>
+            <div>
+                <br><br>Books to read next: <br>
+                {% for sugg in suggested %}
+                    {{sugg}}<br>
+                {% endfor %}
+            </div>
+        </form> 
+    </div>
+</body>
+ 
+</html>
